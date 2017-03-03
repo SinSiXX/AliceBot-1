@@ -12,81 +12,12 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Discord.Addons.InteractiveCommands;
 
-/*Scroll down to CommandsModule class to start helping with the commands.
-The rest are mainly setup stuffs.*/
+/*Setup stuffs are not included in this code to prevent long codes..*/
 
 namespace AliceBot
 {
 
-class Program
-    {
-        public DiscordSocketClient client;
-
-        string codeblock = "```";
-        string newline = "\n";
-
-        static void Main(string[] args) => new Program().Run().GetAwaiter().GetResult();
-
-        public async Task Run() {
-            Arithmetics Arith = new Arithmetics();
-            Additionals AddCmd = new Additionals();
-
-            client = new DiscordSocketClient(new DiscordSocketConfig
-            {
-                MessageCacheSize = 1000,
-            });
-
-            string Mytoken = "TOKEN";
-            await client.LoginAsync(TokenType.Bot, Mytoken);
-        Retrying:
-            try
-            {
-                await client.ConnectAsync();
-            }catch (TimeoutException){
-                goto Retrying;
-            }
-
-            await client.SetGameAsync("Multi-Threading");
-            var guildcount = client.Guilds.Count;
-            var map = new DependencyMap();
-            ConfigureServices(map);
-            await new CommandHandler().Install(map);
-
-            //Delegates stuffs (user leaving, etc), no modification/help needed for now.
-
-            await Task.Delay(-1);
-    }
-        public void ConfigureServices(IDependencyMap map){
-            map.Add(client);
-        }
-
-        public class CommandHandler{
-            private CommandService _commands;
-            private DiscordSocketClient _client;
-            private IDependencyMap _map;
-
-            public async Task Install(IDependencyMap map){
-                _commands = new CommandService();
-                await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
-                map.Add(_commands);
-                _map = map;
-                _client = map.Get<DiscordSocketClient>();
-                _map.Add(new InteractiveService(_client));
-                _client.MessageReceived += HandleCommand;
-            }
-
-            private async Task HandleCommand(SocketMessage messageParam){
-                var message = messageParam as SocketUserMessage;
-                if (message == null) return;
-
-                int argPos = 0;
-                if (!(message.HasMentionPrefix(_client.CurrentUser, ref argPos) || message.HasStringPrefix("|", ref argPos))) return;
-
-                var context = new CommandContext(_client, message);
-                var result = await _commands.ExecuteAsync(context, argPos, _map);
-            }
-        }
-    }
+//All the setup stuffs......
 
 public class CommandsModule : InteractiveModuleBase //Discord.Net InteractiveCommands is being used too.
     {
