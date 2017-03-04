@@ -20,9 +20,9 @@ namespace AliceBot
 
         public class MathFunctions
         {
-            public int gcd(int a, int b)
+            public long gcd(long a, long b)
             {
-                int c;
+                long c;
                 while (a != 0)
                 {
                     c = a;
@@ -32,10 +32,10 @@ namespace AliceBot
                 return b;
             }
 
-            public int Phi(int n)
+            public long Phi(long n)
             {
-                int ret = 0;
-                for (int i = n - 1; i > 0; i--)
+                long ret = 0;
+                for (long i = n - 1; i > 0; i--)
                 {
                     if (gcd(n, i) == 1)
                         ret++;
