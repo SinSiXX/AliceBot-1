@@ -39,6 +39,8 @@ public class CommandsModule : InteractiveModuleBase //Discord.Net InteractiveCom
         private static string GetUptime() => (DateTime.Now - Process.GetCurrentProcess().StartTime).ToString(@"dd\.hh\:mm\:ss");
         private static string GetHeapSize() => Math.Round(GC.GetTotalMemory(true) / (1024.0 * 1024.0), 2).ToString();
 
+    //Not all commands are included to prevent code floods.
+    
         [Command("Help", RunMode = RunMode.Async)]
         public async Task Help() {
             var user = Context.User;
@@ -57,28 +59,6 @@ public class CommandsModule : InteractiveModuleBase //Discord.Net InteractiveCom
                     + "Heap Memory used : " + GetHeapSize() 
                     + codeblock
                     );
-            }
-        }
-
-        [Command("RoleIDs", RunMode = RunMode.Async)]
-        public async Task Idrole()
-        {
-            int NoOfRoles = Context.Guild.Roles.Count;
-            var roles = Context.Guild.Roles;
-            string wat = "```";
-            try
-            {
-                for (int x = 1; x < NoOfRoles; x++)
-                {
-                    wat = wat.Insert(wat.Length, roles.ElementAt(x).Id.ToString());
-                    wat = wat.Insert(wat.Length, " : " + roles.ElementAt(x).ToString() + newline);
-                }
-                wat = wat.Insert(wat.Length, codeblock);
-                await Context.Channel.SendMessageAsync(wat);
-            }
-            catch (Exception e)
-            {
-                await Context.Channel.SendMessageAsync(e.ToString());
             }
         }
 
@@ -151,39 +131,6 @@ public class CommandsModule : InteractiveModuleBase //Discord.Net InteractiveCom
             }
         }
 
-        [Command("Phi", RunMode = RunMode.Async)]
-        public async Task Phi([Remainder]string equation){
-            usage = "Usage : `|Phi <equation>` , where `equation` must not contain any functions , and the result should be lower than 5000.";
-            equation = equation.Replace("x", "*");
-            equation = equation.Replace("X", "*");
-            equation = equation.Replace("÷", "/");
-            equation = equation.ToUpper().Replace("MOD", "%");
-            try
-            {
-                string value = new DataTable().Compute(equation, null).ToString();
-                bool RealValue = true;
-                foreach (char element in value) {
-                    if (RealValue == false) { break; }
-                    else if (value.Contains(Arith.chars[element]) || Convert.ToInt32(value) > 5000) { RealValue = false; }
-                }
-                if (RealValue)
-                {
-                    await Context.Channel.SendMessageAsync(usage);
-                }
-                else
-                {
-                    int number = Convert.ToInt32(value);
-
-                    int result = MFuncty.Phi(number);
-                        await Context.Channel.SendMessageAsync("Phi of " + value + " is : " + result.ToString());}
-            }
-            catch (Exception)
-            {
-                await Context.Channel.SendMessageAsync(usage);
-            }
-
-        }
-
         [Command("GDC", RunMode = RunMode.Async)]
         public async Task GDC(double A, double B) {
             usage = "Usage : `|GDC <a> <b>` , where `a` and `b` should be whole numbers.";
@@ -202,19 +149,6 @@ public class CommandsModule : InteractiveModuleBase //Discord.Net InteractiveCom
                 }
             }
 
-        }
-
-        [Command("IntPolygon", RunMode = RunMode.Async)]
-        public async Task SumOfInt(int n) {
-            usage = "Usage : |IntPolygon <n> . Where n is the number of sides for a polygon and the result is the sum of interior angles.";
-            if (!(n < 3))
-            {
-                int SumOfIntAngle = Arith.IntAngle(n);
-                await Context.Channel.SendMessageAsync("The sum of interior angles for a polygon with " + n + " side(s) is : " + SumOfIntAngle.ToString() + " degrees");
-            }
-            else {
-                await Context.Channel.SendMessageAsync(usage);
-            }
         }
 
         [Command("GuessNo", RunMode = RunMode.Async)]
@@ -248,91 +182,6 @@ public class CommandsModule : InteractiveModuleBase //Discord.Net InteractiveCom
                 }
             }
 
-        }
-
-        [Command("Roll", RunMode = RunMode.Async)]
-        public async Task RollDeCmd([Remainder]string equation = "1"){
-            usage = "Usage : `|Roll <equation>` , where `equation` should return a whole number below 255, and does not contain any functions.";
-            int zzz = 1;
-            try
-            {
-                string value = new DataTable().Compute(equation, null).ToString();
-                zzz = Convert.ToInt32(value);
-            }
-            catch (Exception) {
-                await Context.Channel.SendMessageAsync(usage);
-            }
-
-            if (zzz > 255)
-            {
-                await Context.Channel.SendMessageAsync(usage);
-            }
-            else
-            {
-                byte Number = Convert.ToByte(zzz);
-
-                string directNote = @"C:\Users\Yeo Wen Qin\Documents\Visual Studio 2015\Projects\AliceBot\AliceBot\bin\Release\Notey";
-                string textPath = @"C:\Users\Yeo Wen Qin\Documents\Visual Studio 2015\Projects\AliceBot\AliceBot\bin\Release\Notey\numbers.txt";
-                FileInfo x = new FileInfo(textPath);
-
-                if (Directory.Exists(directNote) == true){
-                    var y = Directory.GetFiles(directNote);
-                    foreach (var element in y){
-                        int i = 0;
-                        File.Delete(y[i]);
-                    }
-                    while (Directory.GetFiles(directNote).Length != 0) { }
-                    Directory.Delete(directNote);
-                }
-
-                if (Number == 0 || Number < 0){
-                    await Context.Channel.SendMessageAsync("Error: Undefined");
-                } else{
-                    Directory.CreateDirectory(directNote);
-                    for (; Number != 0; Number--){
-                        int randnumber = randy.Next(1, 6);
-                        bool processing = true;
-                        while (processing){
-                            try{
-                                using (var tw = new StreamWriter(textPath, true)){
-                                    await tw.WriteAsync(Convert.ToString(randnumber));
-                                    await tw.WriteAsync(" ");
-
-                                    tw.Close();
-                                }
-                                processing = false;
-                            }catch (IOException){
-                                processing = true;
-                            }
-                        }
-                    }
-                    string result = File.ReadAllText(textPath);
-                    await Context.Channel.SendMessageAsync(result);
-                    string adding = result.Replace(" ", "");
-                    int sum = 0;
-                    foreach (char element in adding)
-                    {
-                        sum += Int32.Parse(element.ToString());
-                    }
-                    await Context.Channel.SendMessageAsync("The total sum of all the value rolled is : " + sum
-                        + newline
-                        + "The average value rolled is : " + (Convert.ToInt64(sum)/Convert.ToInt64(zzz)).ToString()
-                        );
-
-                    if (Directory.Exists(directNote) == true)
-                    {
-                        var y = Directory.GetFiles(directNote);
-                        foreach (var element in y)
-                        {
-                            int i = 0;
-                            File.Delete(y[i]);
-                        }
-                        while (Directory.GetFiles(directNote).Length != 0) { }
-
-                        Directory.Delete(directNote);
-                    }
-                }
-            }
         }
 
                 }
