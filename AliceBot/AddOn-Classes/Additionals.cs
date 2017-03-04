@@ -8,7 +8,8 @@ class Additionals {
         string newline = "\n";
 
         public string HelpList() {
-            string linky = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
+            string linkyBotInv = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
+            string linkyServer = @"https://discord.gg/94RvCgd";
             string Helpppp = codeblock
                 + "Markdown" + newline
                 + "This bot is mainly for Arithmetic/Algorithm uses." + newline
@@ -40,7 +41,8 @@ class Additionals {
                 + "RoleIDs - Returns a list of roles and their ID on the server."
                 + newline
                 + codeblock
-                + "You can invite me to your server(s) here : " + linky ;
+                + "You can invite me to your server(s) here : " + linkyBotInv + newline
+                + "You can join my default server here : " + linkyServer;
 
             return Helpppp;
         }
