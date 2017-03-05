@@ -4,7 +4,7 @@ namespace AliceBot
 {
     class Arithmetics
     {
-        public char[] chars = {
+        public char[] Allchars = {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
             'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
@@ -18,6 +18,32 @@ namespace AliceBot
             '<', '>', '?', '_', '"', '.', ',', ' '
         };
 
+        public char[] NonNumbericalchars = {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+            'y', 'z', 'A', 'B', 'C', 'D',
+            'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+            'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z', '!', '@',
+            '#', '$', '%', '^', '&', '(', ')', '+',
+            '-', '*', '/', '[', ']', '{', '}', '=',
+            '<', '>', '?', '_', '"', '.', ','
+        };
+
+        public char[] ForRearrangeUse = {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+            'y', 'z', 'A', 'B', 'C', 'D',
+            'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+            'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z', '!', '@',
+            '#', '$', '%', '^', '&', '(', ')', '+',
+            '-', '*', '/', '[', ']', '{', '}', '=',
+            '<', '>', '?', '_', '"', '.', ' '
+        };
+        
         public class MathFunctions
         {
             public long gcd(long a, long b) {
@@ -71,6 +97,36 @@ namespace AliceBot
                 if (Number % i == 0) { return false; }
             }
             return true;
+        }
+        
+        public string ArrangeToSmallest(string List) {
+            string result =
+            String.Join(", ",
+             List
+             .Split(',')
+             .Select(s => Int64.Parse(s))
+             .OrderBy(n => n)
+             .Select(n => n.ToString())
+             .ToArray()
+             );
+
+            return result;
+        }
+
+        public string ArrangeToLargest(string List) {
+            string result =
+            String.Join(", ",
+             List
+             .Split(',')
+             .Select(s => Int64.Parse(s))
+             .OrderBy(n => n)
+             .Select(n => n.ToString())
+             .ToArray()
+             .Reverse()
+             );
+            
+
+            return result;
         }
 
     }
