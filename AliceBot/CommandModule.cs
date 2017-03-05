@@ -65,6 +65,7 @@ namespace AliceBot
             equation = equation.Replace("X", "*");
             equation = equation.Replace("÷", "/");
             equation = equation.ToUpper().Replace("MOD", "%");
+            equation = equation.ToUpper().Replace("PI", "3.14159265359");
             try
             {
                 string value = new DataTable().Compute(equation, null).ToString();
