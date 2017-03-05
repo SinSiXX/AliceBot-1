@@ -30,6 +30,8 @@ class Additionals {
                 + newline
                 + "quadratic - Lookup on quadratic formulas." + newline
                 + newline
+                + "CheckPrime - Check if the number is prime or not." + newline
+                + newline
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
