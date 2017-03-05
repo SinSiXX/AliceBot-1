@@ -20,8 +20,7 @@ namespace AliceBot
 
         public class MathFunctions
         {
-            public long gcd(long a, long b)
-            {
+            public long gcd(long a, long b) {
                 long c;
                 while (a != 0)
                 {
@@ -32,8 +31,7 @@ namespace AliceBot
                 return b;
             }
 
-            public long Phi(long n)
-            {
+            public long Phi(long n) {
                 long ret = 0;
                 for (long i = n - 1; i > 0; i--)
                 {
@@ -49,8 +47,7 @@ namespace AliceBot
             return x;
         }
 
-        public double QuadraticN(double a, double b, double c)
-        {
+        public double QuadraticN(double a, double b, double c) {
             double x = ((-b) - Math.Sqrt(Math.Pow(b, 2) - (4 * a * c))) / (2 * a);
             return x;
         }
@@ -58,6 +55,22 @@ namespace AliceBot
         public int IntAngle(int n) {
             int SumOfIntAngle = (n - 2) * 180;
             return SumOfIntAngle;
+        }
+        
+        public bool PrimeCheck(long Number) {
+            if (Number < 0 || Number == 0 || Number == 1){
+                return false;
+            }
+            else if (Number == 2) {
+                return true;
+            }
+            else if (Number % 2 == 0) {
+                return false;
+            }
+            for (long i = 3; i < Number; i += 2) { //Only need to check for odd numbers, pretty much even numbers is already checked by 2.
+                if (Number % i == 0) { return false; }
+            }
+            return true;
         }
 
     }
