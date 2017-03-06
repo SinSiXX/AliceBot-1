@@ -6,6 +6,33 @@ class Additionals {
 
         string codeblock = "```";
         string newline = "\n";
+        
+        public double[] Return3Number(string input) {
+            double[] Output = new double[3];
+            for (int i = 0; i < 3; i++)
+            {
+                if (i == 0)
+                {
+                    int x = input.IndexOf(',');
+                    Output[i] = Convert.ToDouble(input.Substring(0, x).Replace(",",""));
+                    Console.WriteLine(Output[i]);
+                }
+                else if (i == 1)
+                {
+                    int x = input.IndexOf(',');
+                    int y = input.LastIndexOf(',');
+                    Output[i] = Convert.ToDouble(input.Substring(x, y-x).Replace(",", ""));
+                    Console.WriteLine(Output[i]);
+                    input = input.Remove(0, y);
+                }
+                else if (i == 2) {
+                    Output[i] = Convert.ToDouble(input.Replace(",", ""));
+                    Console.WriteLine(Output[i]);
+                }
+            }
+            return Output;
+        }
+        
 
         public string HelpList() {
             string linkyBotInv = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
