@@ -35,27 +35,6 @@ namespace AliceBot
             await x.SendMessageAsync(AddCmd.HelpList());
         }
 
-        [Command("quadratic", RunMode = RunMode.Async)]
-        public async Task quadratic(double a =0, double b = 0, double c = 0)
-        { //Doesn't take input properly, sometimes doesn't reply to command
-            usage = "Usage : `quadratic <a> <b> <c>` , where `a` , `b` and `c` are values.";
-
-            double FirstR = Arith.QuadraticN(a, b, c);
-            double SecondR = Arith.QuadraticP(a, b, c);
-            if (FirstR.ToString() == "NaN" || SecondR.ToString() == "NaN")
-            {
-                await Context.Channel.SendMessageAsync("x = infinity or undefined");
-            }
-            else if (FirstR == SecondR) { await Context.Channel.SendMessageAsync("x = " + FirstR); }
-            else
-            {
-                await Context.Channel.SendMessageAsync("x = " + FirstR
-                    + newline + "OR"
-                    + newline + "x = " + SecondR
-                    );
-            }
-        }
-
         [Command("calculate", RunMode = RunMode.Async)]
         public async Task Calculate([Remainder]string equation)
         { //Needs improvement
