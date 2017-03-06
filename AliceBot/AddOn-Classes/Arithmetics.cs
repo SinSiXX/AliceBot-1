@@ -68,13 +68,44 @@ namespace AliceBot
             }
         }
 
-        public double QuadraticP(double a, double b, double c) {
+        public double QuadraticP(double[] Input) {
+            double a = 0, b = 0, c= 0;
+            for (int i = 0; i != 4; i++) {
+                switch (i) {
+                    case 0:
+                        a = Input[i];
+                        break;
+                    case 1:
+                        b = Input[i];
+                        break;
+                    case 2:
+                        c = Input[i];
+                        break;
+                }
+
+            }
             double x = ( (-b) + Math.Sqrt(Math.Pow(b, 2) - (4 * a * c) ) )/(2*a);
             return x;
         }
 
-        public double QuadraticN(double a, double b, double c) {
-            double x = ((-b) - Math.Sqrt(Math.Pow(b, 2) - (4 * a * c))) / (2 * a);
+        public double QuadraticN(double[] Input) {
+            double a = 0, b = 0, c = 0;
+            for (int i = 0; i != 4; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        a = Input[i];
+                        break;
+                    case 1:
+                        b = Input[i];
+                        break;
+                    case 2:
+                        c = Input[i];
+                        break;
+                }
+            }
+                double x = ((-b) - Math.Sqrt(Math.Pow(b, 2) - (4 * a * c))) / (2 * a);
             return x;
         }
 
