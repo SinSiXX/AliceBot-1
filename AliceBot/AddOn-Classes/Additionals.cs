@@ -15,19 +15,16 @@ class Additionals {
                 {
                     int x = input.IndexOf(',');
                     Output[i] = Convert.ToDouble(input.Substring(0, x).Replace(",",""));
-                    Console.WriteLine(Output[i]);
                 }
                 else if (i == 1)
                 {
                     int x = input.IndexOf(',');
                     int y = input.LastIndexOf(',');
                     Output[i] = Convert.ToDouble(input.Substring(x, y-x).Replace(",", ""));
-                    Console.WriteLine(Output[i]);
                     input = input.Remove(0, y);
                 }
                 else if (i == 2) {
                     Output[i] = Convert.ToDouble(input.Replace(",", ""));
-                    Console.WriteLine(Output[i]);
                 }
             }
             return Output;
