@@ -3,6 +3,20 @@ using System;
 namespace AliceBot
 {
 class Additionals {
+        
+        public char[] NonBinaryChar = {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+            'y', 'z', '2', '3', '4', '5',
+            '6', '7', '8', '9', 'A', 'B', 'C', 'D',
+            'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+            'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z', '!', '@',
+            '#', '$', '%', '^', '&', '(', ')', '+',
+            '-', '*', '/', '[', ']', '{', '}', '=',
+            '<', '>', '?', '_', '"', '.', ','
+        };
 
         string codeblock = "```";
         string newline = "\n";
@@ -30,6 +44,26 @@ class Additionals {
             return Output;
         }
         
+        public string ToBinary(string Input){
+            ASCIIEncoding encode = new ASCIIEncoding();
+            string output = "";
+            foreach (char c in Input) {
+               output += Convert.ToString(c, 2).PadLeft(8, '0') + " ";
+            }
+            return output;
+        }
+
+        public string FromBinary(string binary){
+            string output = "";
+            binary = binary.Replace(" ", "");
+            for (int i = 0; i < binary.Length; i += 8)
+            {
+                string C = binary.Substring(i, 8);
+                output += (char)Convert.ToByte(C, 2);
+            }
+            return output;
+
+        }
 
         public string HelpList() {
             string linkyBotInv = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
@@ -53,7 +87,7 @@ class Additionals {
                 + newline
                 + "IntPolygon - Find the sum of interior angles of a polygon with n-sides." + newline
                 + newline
-                + "quadratic - Lookup on quadratic formulas. [May be buggy!]" + newline
+                + "quadratic - Lookup on quadratic formulas." + newline
                 + newline
                 + "CheckPrime - Check if the number is prime or not." + newline
                 + newline
@@ -69,8 +103,11 @@ class Additionals {
                 + "Other Commands"
                 + newline
                 + "==========================" + newline
-                + "RoleIDs - Returns a list of roles and their ID on the server."
+                + "RoleIDs - Returns a list of roles and their ID on the server." + newline
                 + newline
+                + "ToBinary - Convert a text message to binary." + newline
+                + newline
+                + "FromBinary - Converts a binary message to text." + newline
                 + codeblock
                 + "You can invite me to your server(s) here : " + linkyBotInv + newline
                 + "You can join my default server here : " + linkyServer + newline
