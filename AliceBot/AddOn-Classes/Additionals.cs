@@ -3,21 +3,6 @@ using System;
 namespace AliceBot
 {
 class Additionals {
-        
-        public char[] NonBinaryChar = {
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-            'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-            'y', 'z', '2', '3', '4', '5',
-            '6', '7', '8', '9', 'A', 'B', 'C', 'D',
-            'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-            'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-            'U', 'V', 'W', 'X', 'Y', 'Z', '!', '@',
-            '#', '$', '%', '^', '&', '(', ')', '+',
-            '-', '*', '/', '[', ']', '{', '}', '=',
-            '<', '>', '?', '_', '"', '.', ','
-        };
-
         string codeblock = "```";
         string newline = "\n";
         
@@ -42,27 +27,6 @@ class Additionals {
                 }
             }
             return Output;
-        }
-        
-        public string ToBinary(string Input){
-            ASCIIEncoding encode = new ASCIIEncoding();
-            string output = "";
-            foreach (char c in Input) {
-               output += Convert.ToString(c, 2).PadLeft(8, '0') + " ";
-            }
-            return output;
-        }
-
-        public string FromBinary(string binary){
-            string output = "";
-            binary = binary.Replace(" ", "");
-            for (int i = 0; i < binary.Length; i += 8)
-            {
-                string C = binary.Substring(i, 8);
-                output += (char)Convert.ToByte(C, 2);
-            }
-            return output;
-
         }
 
         public string HelpList() {
@@ -108,6 +72,8 @@ class Additionals {
                 + "ToBinary - Convert a text message to binary." + newline
                 + newline
                 + "FromBinary - Converts a binary message to text." + newline
+                + newline
+                + "ToMorse - Convert a text message to Morse Code." + newline
                 + codeblock
                 + "You can invite me to your server(s) here : " + linkyBotInv + newline
                 + "You can join my default server here : " + linkyServer + newline
