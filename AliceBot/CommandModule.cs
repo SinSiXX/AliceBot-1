@@ -22,6 +22,7 @@ namespace AliceBot
         Random randy = new Random();
         Arithmetics Arith = new Arithmetics();
         Additionals AddCmd = new Additionals();
+        Converters CVert = new Converters();
         Arithmetics.MathFunctions MFuncty = new Arithmetics.MathFunctions();
 
         private static string GetUptime() => (DateTime.Now - Process.GetCurrentProcess().StartTime).ToString(@"dd\.hh\:mm\:ss");
