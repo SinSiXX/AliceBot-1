@@ -155,9 +155,25 @@ namespace AliceBot
              .ToArray()
              .Reverse()
              );
-            
-
             return result;
+        }
+        
+        public double FindMedian(double[] Input) {
+            Array.Sort(Input);
+            int Lengthy = Input.Length;
+            double Output = 0;
+            bool OddOrEven;
+            if (Input.Length % 2 == 0) { OddOrEven = true; /*even*/ }
+            else { OddOrEven = false; /*odd*/ }
+
+            if (OddOrEven == true)
+            {
+                Output += (Input[(Input.Length - 1) / 2] + Input[((Input.Length -1) / 2 )+1])/2;
+            }
+            else if (OddOrEven == false) {
+                Output += Input[((Input.Length - 1) / 2) ];
+            }
+            return Output;
         }
 
     }
