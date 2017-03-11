@@ -59,6 +59,8 @@ class Additionals {
                 + newline
                 + "OrderSmall - Rearrange a list of numbers from smallest to biggest" + newline
                 + newline
+                + "GetMedian - Get the median value from a list of numbers" + newline
+                + newline
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
