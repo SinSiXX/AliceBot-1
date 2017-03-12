@@ -46,6 +46,10 @@ namespace AliceBot
         
         public class MathFunctions
         {
+            public double Pythagoras(double a, double b) {
+                return Math.Sqrt( (Math.Pow(a, 2) + Math.Pow(b, 2)));
+            }
+            
             public long gcd(long a, long b) {
                 long c;
                 while (a != 0)
