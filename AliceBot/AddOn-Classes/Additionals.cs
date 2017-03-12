@@ -61,6 +61,8 @@ class Additionals {
                 + newline
                 + "GetMedian - Get the median value from a list of numbers" + newline
                 + newline
+                + "Pythagoras - Readup on Pythagoras' Theorem" + newline
+                + newline
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
