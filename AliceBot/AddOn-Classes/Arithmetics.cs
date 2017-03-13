@@ -179,6 +179,47 @@ namespace AliceBot
             }
             return Output;
         }
+        
+        public byte Compare(string First, string Second) {
+            try
+            {
+                double A = Convert.ToDouble(Calculator(First));
+                double B = Convert.ToDouble(Calculator(Second));
+                if (A == B)
+                {
+                    return 0;
+                }
+                else if (A > B)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            catch (Exception) {
+                return 3;
+            }
+
+        }
+
+        private static double Calculator(string Input) {
+            Input = Input.Replace("x", "*");
+            Input = Input.Replace("X", "*");
+            Input = Input.Replace("÷", "/");
+            Input = Input.ToUpper().Replace("MOD", "%");
+            Input = Input.ToUpper().Replace("PI", "3.14159265359");
+                string value = new DataTable().Compute(Input, null).ToString();
+                if (value == "NaN")
+                {
+                    return Double.MaxValue;
+                }
+                else
+                {
+                    return Convert.ToDouble(value);
+                }
+        }
 
     }
 }
