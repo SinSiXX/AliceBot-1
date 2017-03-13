@@ -63,6 +63,8 @@ class Additionals {
                 + newline
                 + "Pythagoras - Readup on Pythagoras' Theorem" + newline
                 + newline
+                + "Compare - Compares between 2 equations that returns a numerical value." + newline
+                + newline
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
