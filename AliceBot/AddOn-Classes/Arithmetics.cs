@@ -119,16 +119,15 @@ namespace AliceBot
         }
         
         public bool PrimeCheck(long Number) {
-            if (Number < 0 || Number == 0 || Number == 1){
+            if (Number < 0 || Number == 0 || Number == 1)
+            {
                 return false;
             }
-            else if (Number == 2) {
+            else if (Number == 2)
+            {
                 return true;
             }
-            else if (Number % 2 == 0) {
-                return false;
-            }
-            for (long i = 3; i < Number; i += 2) { //Only need to check for odd numbers, pretty much even numbers is already checked by 2.
+            for (long i = 2; i < Math.Sqrt(Number); i += 1) { 
                 if (Number % i == 0) { return false; }
             }
             return true;
