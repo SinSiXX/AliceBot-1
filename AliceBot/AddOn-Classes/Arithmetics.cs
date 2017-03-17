@@ -219,6 +219,54 @@ namespace AliceBot
                     return Convert.ToDouble(value);
                 }
         }
+        
+        public string Decrypt(string cip, int offset)
+        {
+            char[] cipher = cip.ToCharArray();
+
+            for (int i = 0; i < cipher.Length; i++)
+            {
+                for (int j = 0; j < Allchars.Length; j++)
+                {
+                    if (j >= offset && cipher[i] == Allchars[j])
+                    {
+                        cipher[i] = Allchars[j - offset];
+                        break;
+                    }
+                    if (cipher[i] == Allchars[j] && j < offset)
+                    {
+                        cipher[i] = Allchars[(Allchars.Length - offset + 1) + j];
+                        break;
+                    }
+                }
+            }
+            return new string(cipher);
+        }
+
+        public string Encrypt(string text, int offset)
+        {
+            char[] plain = text.ToCharArray();
+
+            for (int i = 0; i < plain.Length; i++)
+            {
+                for (int j = 0; j < Allchars.Length; j++)
+                {
+                    if (j <= Allchars.Length - offset)
+                    {
+                        if (plain[i] == Allchars[j])
+                        {
+                            plain[i] = Allchars[j + offset];
+                            break;
+                        }
+                    }
+                    else if (plain[i] == Allchars[j])
+                    {
+                        plain[i] = Allchars[j - (Allchars.Length - offset + 1)];
+                    }
+                }
+            }
+            return new string(plain);
+        }
 
     }
 }
