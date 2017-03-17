@@ -80,6 +80,12 @@ class Additionals {
                 + "FromBinary - Converts a binary message to text." + newline
                 + newline
                 + "ToMorse - Convert a text message to Morse Code." + newline
+                + newline
+                + "caesarDecrypt - Decrypt a message using Caesar Cipher" + newline
+                + newline
+                + "caesarEncrypt - Encrypt a message using Caesar Cipher" + newline
+                + newline
+                + "WDlength - Returns the word count." + newline
                 + codeblock
                 + "You can invite me to your server(s) here : " + linkyBotInv + newline
                 + "You can join my default server here : " + linkyServer + newline
