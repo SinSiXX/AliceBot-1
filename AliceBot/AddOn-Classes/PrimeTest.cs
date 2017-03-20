@@ -8,7 +8,7 @@ namespace AliceBot
 {
     class PrimeTest : Arithmetics
     {
-        int NoOfTrials = 50;
+        int NoOfTrials = 75;
 
         Random randy = new Random();
         Arithmetics Arith = new Arithmetics();
