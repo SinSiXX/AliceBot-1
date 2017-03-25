@@ -46,6 +46,16 @@ namespace AliceBot
         
         public class MathFunctions
         {
+            private Random randy = new Random();
+
+            public double Heron(double a, double b, double c) {
+                if (0 > a || 0 > b || 0 > c) { 
+                    return 0 / randy.Next(0,0);
+                }
+                double S = (a + b + c) / 2;
+                return Math.Sqrt(S * (S-a) * (S - b) * (S - c));
+            }
+            
             public double Pythagoras(double a, double b) {
                 return Math.Sqrt( (Math.Pow(a, 2) + Math.Pow(b, 2)));
             }
