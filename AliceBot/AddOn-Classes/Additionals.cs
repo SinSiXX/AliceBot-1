@@ -65,6 +65,8 @@ class Additionals {
                 + newline
                 + "Compare - Compares between 2 equations that returns a numerical value." + newline
                 + newline
+                + "Heron - Find the area of a triangle with length of 3 sides provided." + newline
+                + newline
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
