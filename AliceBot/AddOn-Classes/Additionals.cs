@@ -6,6 +6,26 @@ class Additionals {
         string codeblock = "```";
         string newline = "\n";
         
+        public string DetermineTorF(string input) {
+            try {
+                input = input.Replace("^", "And").Replace("v", "Or").Replace("~", "Not");
+                input = input.ToLower().Replace("||", "Or").Replace("&&", "And").Replace("!", "Not").Replace('t','T').Replace('f','F');
+
+                System.Data.DataTable table = new System.Data.DataTable();
+                table.Columns.Add("", typeof(Boolean));
+                table.Columns[0].Expression = input;
+
+                System.Data.DataRow r = table.NewRow();
+                table.Rows.Add(r);
+                Boolean result = (Boolean)r[0];
+
+                return result.ToString();
+            }
+            catch (Exception){
+                return "error";
+            }
+        }
+        
         public double[] Return3Number(string input) {
             double[] Output = new double[3];
             for (int i = 0; i < 3; i++)
@@ -29,9 +49,9 @@ class Additionals {
             return Output;
         }
 
-        public string HelpList() {
+       public string HelpList() {
             string linkyBotInv = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
-            string linkyServer = @"https://discord.gg/94RvCgd";
+            string linkyServer = @"https://discord.gg/cRjURSG";
             string DevHelp = @"https://github.com/House-of-Alice-Margatroid/AliceBot";
             string Helpppp = codeblock
                 + "Markdown" + newline
@@ -55,23 +75,27 @@ class Additionals {
                 + newline
                 + "CheckPrime - Check if the number is prime or not." + newline
                 + newline
-                + "OrderBig - Rearrange a list of numbers from biggest to smallest" + newline
+                + "OrderBig - Rearrange a list of numbers from biggest to smallest." + newline
                 + newline
-                + "OrderSmall - Rearrange a list of numbers from smallest to biggest" + newline
+                + "OrderSmall - Rearrange a list of numbers from smallest to biggest." + newline
                 + newline
-                + "GetMedian - Get the median value from a list of numbers" + newline
+                + "GetMedian - Get the median value from a list of numbers." + newline
                 + newline
-                + "Pythagoras - Readup on Pythagoras' Theorem" + newline
+                + "Pythagoras - Readup on Pythagoras' Theorem." + newline
                 + newline
                 + "Compare - Compares between 2 equations that returns a numerical value." + newline
                 + newline
                 + "Heron - Find the area of a triangle with length of 3 sides provided." + newline
                 + newline
+                + "TorF - evaluate if the statement is true or false." + newline
+                + newline
+
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
                 + "Roll" + newline
                 + newline
+
                 + "Other Commands"
                 + newline
                 + "==========================" + newline
@@ -83,9 +107,9 @@ class Additionals {
                 + newline
                 + "ToMorse - Convert a text message to Morse Code." + newline
                 + newline
-                + "caesarDecrypt - Decrypt a message using Caesar Cipher" + newline
+                + "caesarDecrypt - Decrypt a message using Caesar Cipher." + newline
                 + newline
-                + "caesarEncrypt - Encrypt a message using Caesar Cipher" + newline
+                + "caesarEncrypt - Encrypt a message using Caesar Cipher." + newline
                 + newline
                 + "WDlength - Returns the word count." + newline
                 + codeblock
