@@ -51,7 +51,6 @@ class Additionals {
 
        public string HelpList() {
             string linkyBotInv = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
-            string linkyServer = @"https://discord.gg/cRjURSG";
             string DevHelp = @"https://github.com/House-of-Alice-Margatroid/AliceBot";
             string Helpppp = codeblock
                 + "Markdown" + newline
@@ -114,7 +113,6 @@ class Additionals {
                 + "WDlength - Returns the word count." + newline
                 + codeblock
                 + "You can invite me to your server(s) here : " + linkyBotInv + newline
-                + "You can join my default server here : " + linkyServer + newline
                 +"You can help to contribute my development here : " + DevHelp;
 
             return Helpppp;
