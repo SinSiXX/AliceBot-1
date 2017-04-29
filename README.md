@@ -13,3 +13,6 @@ List of developers:<ul>
 List of Contributors, credits :<ul>
 <li>N/A</li>
 </ul>
+
+<b>Note</b>: Not every code is included here to prevent dumping on large lump of codes that doesn't require fixing anymore, aka making it harder to find codes that needs fixing.<br>
+Only codes that needs fixing or improving will be included. If I feel that a portion of code doesn't require to be removed as it doesn't hinder any progress, I won't be removing it.
