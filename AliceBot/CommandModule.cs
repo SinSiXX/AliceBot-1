@@ -39,7 +39,7 @@ namespace AliceBot
         [Command("calculate", RunMode = RunMode.Async)]
         public async Task Calculate([Remainder]string equation)
         { //Needs improvement
-            usage = "Usage : `|calculate <equation>` , where `equation` must not contain any functions.";
+            usage = "Usage : `|-calculate <equation>` , where `equation` must not contain any functions.";
 
             equation = equation.Replace("x", "*");
             equation = equation.Replace("X", "*");
