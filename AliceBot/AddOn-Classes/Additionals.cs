@@ -49,13 +49,14 @@ class Additionals {
             return Output;
         }
 
-       public string HelpList() {
+public string HelpList()
+        {
             string linkyBotInv = @"https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841";
             string DevHelp = @"https://github.com/House-of-Alice-Margatroid/AliceBot";
             string Helpppp = codeblock
                 + "Markdown" + newline
                 + "This bot is mainly for Arithmetic/Algorithm uses." + newline
-                + "Prefix : |" + newline
+                + "Prefix : |-" + newline
                 + newline
                 + "Arithmetic/Algorithm Commands"
                 + newline
@@ -111,9 +112,14 @@ class Additionals {
                 + "caesarEncrypt - Encrypt a message using Caesar Cipher." + newline
                 + newline
                 + "WDlength - Returns the word count." + newline
+                + newline
+                + "VCencrypt - Encrypts a text using Vigenere Cipher." + newline
+                + newline
+                + "VCdecrypt - Decrypts a text using Vigenere Cipher." + newline
+                + newline
                 + codeblock
                 + "You can invite me to your server(s) here : " + linkyBotInv + newline
-                +"You can help to contribute my development here : " + DevHelp;
+                + "You can help to contribute my development here : " + DevHelp;
 
             return Helpppp;
         }
