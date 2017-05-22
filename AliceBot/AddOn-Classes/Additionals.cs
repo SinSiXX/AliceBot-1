@@ -89,7 +89,6 @@ public string HelpList()
                 + newline
                 + "TorF - evaluate if the statement is true or false." + newline
                 + newline
-
                 + "Fun/Game Commands"
                 + newline
                 + "==========================" + newline
@@ -116,6 +115,10 @@ public string HelpList()
                 + "VCencrypt - Encrypts a text using Vigenere Cipher." + newline
                 + newline
                 + "VCdecrypt - Decrypts a text using Vigenere Cipher." + newline
+                + newline
+                + "B10toB2 - Converts from Base10 to Base2 (No, it is not the same algorithm for binary), this is for numbers only." + newline
+                + newline
+                + "B2toB10 - Converts from Base2 to Base10 (No, it is not the same algorithm for binary), this is for numbers only." + newline
                 + newline
                 + codeblock
                 + "You can invite me to your server(s) here : " + linkyBotInv + newline
