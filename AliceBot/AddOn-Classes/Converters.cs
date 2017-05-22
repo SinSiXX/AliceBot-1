@@ -131,6 +131,176 @@ namespace AliceBot
             }
 
         }
+        
+        
+        public class ToBase10
+        {
+            public string FromBase16(string base16)
+            {
+                int base10 = 0;
+                base16 = base16.ToUpper();
+                if (CheckIfHexaDecimal(base16))
+                {
+                    for (int i = 0, base16L = base16.Length - 1; base16L != -1; i++, base16L--)
+                    {
+                        string Digit = base16[base16L].ToString();
+                        byte store = 0;
+                        switch (Digit)
+                        {
+                            case "A":
+                                store = 10;
+                                base10 += (int)(store * (Math.Pow(16, i)));
+                                break;
+                            case "B":
+                                store = 11;
+                                base10 += (int)(store * (Math.Pow(16, i)));
+                                break;
+                            case "C":
+                                store = 12;
+                                base10 += (int)(store * (Math.Pow(16, i)));
+                                break;
+                            case "D":
+                                store = 13;
+                                base10 += (int)(store * (Math.Pow(16, i)));
+                                break;
+                            case "E":
+                                store = 14;
+                                base10 += (int)(store * (Math.Pow(16, i)));
+                                break;
+                            case "F":
+                                store = 15;
+                                base10 += (int)(store * (Math.Pow(16, i)));
+                                break;
+                            default:
+                                base10 += (int)(Convert.ToSByte(Digit) * (Math.Pow(16, i)));
+                                break;
+                        }
+                    }
+                    return base10.ToString();
+                }
+                else
+                {
+                    return "Please input a valid Base16 value!";
+
+                }
+            }
+
+            private bool CheckIfHexaDecimal(string input)
+            {
+                return System.Text.RegularExpressions.Regex.IsMatch(input, @"\A\b[0-9a-fA-F]+\b\Z");
+            }
+
+            public string FromBase2(string base2)
+            {
+                bool Base2orNot = CheckIfBase2(base2);
+                if (!Base2orNot) { return "Please enter a valid Base2 value"; }
+                else
+                {
+                    int Base10 = 0;
+                    for (int i = 0, MaxLength = base2.Length - 1; MaxLength > -1; MaxLength--, i++)
+                    {
+                        char digit = base2[MaxLength];
+                        if (digit == '1')
+                        {
+                            Base10 += (int)(Math.Pow(2, i));
+                        }
+                    }
+                    return Base10.ToString();
+                }
+            }
+
+            private bool CheckIfBase2(string input)
+            {
+                try
+                {
+                    foreach (char c in input)
+                    {
+                        int element = Convert.ToInt32(c.ToString());
+                        if (element < 0 || element > 1)
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+                catch (Exception) { return false; }
+            }
+
+        }
+
+        public class ToBase2 {
+            private readonly Dictionary<string, string> HexDec = new Dictionary<string, string>();
+
+            public ToBase2()
+            {
+                HexDec.Add("0", "0000");
+                HexDec.Add("1", "0001");
+                HexDec.Add("2", "0010");
+                HexDec.Add("3", "0011");
+                HexDec.Add("4", "0100");
+                HexDec.Add("5", "0101");
+                HexDec.Add("6", "0110");
+                HexDec.Add("7", "0111");
+                HexDec.Add("8", "1000");
+                HexDec.Add("9", "1001");
+                HexDec.Add("A", "1010");
+                HexDec.Add("B", "1011");
+                HexDec.Add("C", "1100");
+                HexDec.Add("D", "1101");
+                HexDec.Add("E", "1110");
+                HexDec.Add("F", "1111");
+            }
+
+            public string FromBase10(string Base10)
+            {
+                try
+                {
+                    if (Convert.ToInt32(Base10) == 0) { return "0"; }
+                    string Base2 = "";
+                    for (int i = 0, result = Convert.ToInt32(Base10); result != 0;)
+                    {
+                        i = result % 2;
+                        result /= 2;
+                        Base2 += i.ToString();
+                    }
+                    return ReverseString(Base2);
+                }
+                catch (Exception) { return "Please input a valid base10 value!"; }
+            }
+
+            private string ReverseString(string input)
+            {
+                char[] CharArray = input.ToCharArray();
+                Array.Reverse(CharArray);
+                return new string(CharArray);
+            }
+
+            public string FromBase16(string Base16)
+            {
+                try
+                {
+                    Base16 = Base16.ToUpper();
+                    if (CheckIfHexaDecimal(Base16) == false) { return "Please input a valid Base16 value!"; }
+                    string Base2 = "";
+                    foreach (char element in Base16)
+                    {
+                        string Store = element.ToString();
+                        Base2 += HexDec[Store];
+                    }
+                    return Base2;
+                }
+                catch (Exception)
+                {
+                    return "Please input a valid Base16 value!";
+                }
+            }
+
+            private bool CheckIfHexaDecimal(string input)
+            {
+                return System.Text.RegularExpressions.Regex.IsMatch(input, @"\A\b[0-9a-fA-F]+\b\Z");
+            }
+        }
 
     }
 }
