@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AliceBot
 {
+    
+    //Code is copied from one of my resporitories.
+    //https://github.com/Yeo-Wen-Qin/BaseConversions
     class Converters
     {
         public char[] NonBinaryChar = {
