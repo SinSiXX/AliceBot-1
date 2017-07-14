@@ -3,6 +3,7 @@
 #include <string>
 #include <regex>
 
+//To be linked with C# codes
 struct letterAndMorse
 {
 	char letter;
@@ -36,6 +37,7 @@ char getCharFromMorse(const std::string &morse) {
 	return '\0';
 }
 
+//For testing 
 int main() {
 	std::ios_base::sync_with_stdio(false);
 
