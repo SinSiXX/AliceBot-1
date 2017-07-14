@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace AliceBot
 {
+    //Code is copied from one of my resporitories
+    //https://github.com/Yeo-Wen-Qin/PrimeTester
     class PrimeTest : Arithmetics
     {
         int NoOfTrials = 75;
