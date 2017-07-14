@@ -8,8 +8,17 @@ class Additionals {
         
         public string DetermineTorF(string input) {
             try {
-                input = input.Replace("^", "And").Replace("v", "Or").Replace("~", "Not");
-                input = input.ToLower().Replace("||", "Or").Replace("&&", "And").Replace("!", "Not").Replace('t','T').Replace('f','F');
+                    //Replaces all logic symbols with literal wording
+                    //To make the system able to compute this
+                input = input.Replace("^", "And")
+                        .Replace("v", "Or")
+                        .Replace("~", "Not")
+                        .ToLower()
+                        .Replace("||", "Or")
+                        .Replace("&&", "And")
+                        .Replace("!", "Not")
+                        .Replace('t','T')
+                        .Replace('f','F');
 
                 System.Data.DataTable table = new System.Data.DataTable();
                 table.Columns.Add("", typeof(Boolean));
@@ -26,14 +35,15 @@ class Additionals {
             }
         }
         
+        //Used to split up a string into three different arrays with commas
         public double[] Return3Number(string input) {
             double[] Output = new double[3];
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; ++i)
             {
                 if (i == 0)
                 {
-                    int x = input.IndexOf(',');
-                    Output[i] = Convert.ToDouble(input.Substring(0, x).Replace(",",""));
+                        //Replaces the commas with a black space
+                    Output[i] = Convert.ToDouble(input.Substring(0, input.IndexOf(',')).Replace(",",""));
                 }
                 else if (i == 1)
                 {
