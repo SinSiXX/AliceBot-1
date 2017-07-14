@@ -4,6 +4,8 @@ using System.Linq;
 
 namespace AliceBot
 {
+    //Code is copied from one of my resporitories
+    //https://github.com/Yeo-Wen-Qin/Entropy-Calculator
     class EntropyCal
     {
         public double EntropyValue(string password) {
