@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace AliceMBot.Others
 {
+    //Code is copied from one of my resporitires
+    //https://github.com/Yeo-Wen-Qin/VigenereCipher
     class VigenereCipher
     {
         Dictionary<sbyte, char> AlphabetOrder = new Dictionary<sbyte, char>();
