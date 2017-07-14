@@ -31,8 +31,8 @@ namespace AliceBot
         [Command("Help", RunMode = RunMode.Async)]
         public async Task Help()
         {
-            var user = Context.User;
-            var x = await user.CreateDMChannelAsync();
+        //Sends the list of commands to the user's inbox
+            var x = await Context.User.CreateDMChannelAsync();
             await x.SendMessageAsync(AddCmd.HelpList());
         }
 
@@ -40,12 +40,15 @@ namespace AliceBot
         public async Task Calculate([Remainder]string equation)
         { //Needs improvement
             usage = "Usage : `|-calculate <equation>` , where `equation` must not contain any functions.";
-
-            equation = equation.Replace("x", "*");
-            equation = equation.Replace("X", "*");
-            equation = equation.Replace("÷", "/");
-            equation = equation.ToUpper().Replace("MOD", "%");
-            equation = equation.ToUpper().Replace("PI", "3.14159265359");
+            //Replaces all the possible math symbols that may appear
+            //Invalid for the computer to compute
+            equation = equation.ToUpper()
+            .Replace("x", "*")
+            .Replace("X", "*")
+            .Replace("÷", "/")
+            .Replace("MOD", "%")
+            .Replace("PI", "3.14159265359")
+            .Replace("E", "2.718281828459045");
             try
             {
                 string value = new DataTable().Compute(equation, null).ToString();
