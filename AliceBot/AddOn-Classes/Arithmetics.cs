@@ -4,6 +4,7 @@ namespace AliceBot
 {
     class Arithmetics
     {
+        //Stores ASCII for all the common characters shown on keyboard.
         public char[] Allchars = {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
@@ -18,6 +19,7 @@ namespace AliceBot
             '<', '>', '?', '_', '"', '.', ',', ' '
         };
 
+        //Does the same as above, but does not store numerical values.
         public char[] NonNumbericalchars = {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
@@ -31,6 +33,8 @@ namespace AliceBot
             '<', '>', '?', '_', '"', '.', ','
         };
 
+        //Used in one of the functions, does not contain some symbols
+        //And have other symbols instead.
         public char[] ForRearrangeUse = {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
@@ -48,6 +52,7 @@ namespace AliceBot
         {
             private Random randy = new Random();
 
+            //Based on Heron's theorem
             public double Heron(double a, double b, double c) {
                 if (0 > a || 0 > b || 0 > c) { 
                     return 0 / randy.Next(0,0);
@@ -56,10 +61,12 @@ namespace AliceBot
                 return Math.Sqrt(S * (S-a) * (S - b) * (S - c));
             }
             
+            //Uses Pythagoras theorem
             public double Pythagoras(double a, double b) {
                 return Math.Sqrt( (Math.Pow(a, 2) + Math.Pow(b, 2)));
             }
             
+            //Finds the greatest common divisor between two numbers
             public long gcd(long a, long b) {
                 long c;
                 while (a != 0)
@@ -71,20 +78,23 @@ namespace AliceBot
                 return b;
             }
 
+            //Finds the Phi of a number
             public long Phi(long n) {
                 long ret = 0;
-                for (long i = n - 1; i > 0; i--)
+                for (long i = n - 1; i > 0; --i)
                 {
                     if (gcd(n, i) == 1)
-                        ret++;
+                        ++ret;
                 }
                 return ret;
             }
         }
 
+        //Solves Quadratic equation and gives only the positive result
+        //If there is one
         public double QuadraticP(double[] Input) {
             double a = 0, b = 0, c= 0;
-            for (int i = 0; i != 4; i++) {
+            for (int i = 0; i != 4; ++i) {
                 switch (i) {
                     case 0:
                         a = Input[i];
@@ -102,9 +112,11 @@ namespace AliceBot
             return x;
         }
 
+        //Solves Quadratic equation and gives only the negative result
+        //If there is one.
         public double QuadraticN(double[] Input) {
             double a = 0, b = 0, c = 0;
-            for (int i = 0; i != 4; i++)
+            for (int i = 0; i != 4; ++i)
             {
                 switch (i)
                 {
@@ -123,11 +135,14 @@ namespace AliceBot
             return x;
         }
 
+        //Finds the sum of angles in a shape given the number of sides.
         public int IntAngle(int n) {
-            int SumOfIntAngle = (n - 2) * 180;
-            return SumOfIntAngle;
+            return (n - 2) * 180;
         }
         
+        //Checks if number is prime
+        //Only used for small numbers
+        //Fermat theorem is used for larger values.
         public bool PrimeCheck(long Number) {
             if (Number < 0 || Number == 0 || Number == 1)
             {
@@ -137,12 +152,13 @@ namespace AliceBot
             {
                 return true;
             }
-            for (long i = 2; i < Math.Sqrt(Number); i += 1) { 
+            for (long i = 2; i < Math.Sqrt(Number); ++i) { 
                 if (Number % i == 0) { return false; }
             }
             return true;
         }
         
+        //Arrange a list of numbers from largest to smallest
         public string ArrangeToSmallest(string List) {
             string result =
             String.Join(", ",
@@ -157,6 +173,7 @@ namespace AliceBot
             return result;
         }
 
+        //Arrange a list of numbers from smallest to largest
         public string ArrangeToLargest(string List) {
             string result =
             String.Join(", ",
@@ -171,24 +188,27 @@ namespace AliceBot
             return result;
         }
         
+        //Finds the median from a list of numbers
         public double FindMedian(double[] Input) {
             Array.Sort(Input);
-            int Lengthy = Input.Length;
-            double Output = 0;
+
             bool OddOrEven;
-            if (Input.Length % 2 == 0) { OddOrEven = true; /*even*/ }
-            else { OddOrEven = false; /*odd*/ }
+            //Check if the array length is even or odd
+            //If even OddOrEven will become true.
+            if (Input.Length % 2 == 0) { OddOrEven = true; }
+            else { OddOrEven = false; }
 
             if (OddOrEven == true)
             {
-                Output += (Input[(Input.Length - 1) / 2] + Input[((Input.Length -1) / 2 )+1])/2;
+                return (Input[(Input.Length - 1) / 2] + Input[((Input.Length -1) / 2 )+1])/2;
             }
             else if (OddOrEven == false) {
-                Output += Input[((Input.Length - 1) / 2) ];
+                return Input[((Input.Length - 1) / 2) ];
             }
-            return Output;
+            return 0;
         }
         
+        //Compares between two values and compute which is larger or smaller
         public byte Compare(string First, string Second) {
             try
             {
@@ -213,12 +233,16 @@ namespace AliceBot
 
         }
 
+        //Its a calculator
         private static double Calculator(string Input) {
-            Input = Input.Replace("x", "*");
-            Input = Input.Replace("X", "*");
-            Input = Input.Replace("÷", "/");
-            Input = Input.ToUpper().Replace("MOD", "%");
-            Input = Input.ToUpper().Replace("PI", "3.14159265359");
+            //Replaces math symbols that the system cannot compute
+            //Into computable symnbols
+            Input =  Input.ToUpper()
+                .Input.Replace("X", "*")
+                .Input.Replace("÷", "/")
+                .Replace("MOD", "%")
+                .Replace("PI", "3.14159265359")
+                .Replace("E", "2.718281828459045");
                 string value = new DataTable().Compute(Input, null).ToString();
                 if (value == "NaN")
                 {
@@ -230,13 +254,14 @@ namespace AliceBot
                 }
         }
         
+        //Ceaser Cipher to decrypt texts
         public string Decrypt(string cip, int offset)
         {
             char[] cipher = cip.ToCharArray();
 
-            for (int i = 0; i < cipher.Length; i++)
+            for (int i = 0; i < cipher.Length; ++i)
             {
-                for (int j = 0; j < Allchars.Length; j++)
+                for (int j = 0; j < Allchars.Length; ++j)
                 {
                     if (j >= offset && cipher[i] == Allchars[j])
                     {
@@ -253,13 +278,14 @@ namespace AliceBot
             return new string(cipher);
         }
 
+        //Ceaser Cipher to encrypt texts
         public string Encrypt(string text, int offset)
         {
             char[] plain = text.ToCharArray();
 
-            for (int i = 0; i < plain.Length; i++)
+            for (int i = 0; i < plain.Length; ++i)
             {
-                for (int j = 0; j < Allchars.Length; j++)
+                for (int j = 0; j < Allchars.Length; ++j)
                 {
                     if (j <= Allchars.Length - offset)
                     {
