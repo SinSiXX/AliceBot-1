@@ -1,10 +1,9 @@
 # Alice Margatroid Bot
 Alice Margatroid Bot on Discord
 <br></br>You can invite the bot [here](https://discordapp.com/oauth2/authorize?client_id=284975424105349120&scope=bot&permissions=1341643841).
-<br></br>There is no default server delicated for the bot. But in case of any issues, you can commonly find me [here](https://discord.gg/YRJGvXF). (I will be found as K2Shape or WQYeo)
+<br></br>There is no default server delicated for the bot. But in case of any issues, you can commonly find me [here](https://discord.gg/Etf4k2e). (I will be found as K2Shape or WQYeo)
 
 <b><font size="+2">This bot is currently old and outdated.<br>
-A newer version of the bot is located [here](https://github.com/House-of-Alice-Margatroid/YuyukoBot).
 
 This, Alice Margatroid, is a discord Bot made by us using C# Discord.NET, it is mainly designed to be used to help with arithmetic works though it can be used for other purposes too!
 
