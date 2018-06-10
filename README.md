@@ -7,7 +7,7 @@ Alice Margatroid Bot on Discord
 This, Alice Margatroid, is a discord Bot made by us using C# Discord.NET, it is mainly designed to be used to help with arithmetic works though it can be used for other purposes too!
 
 List of developers:<ul>
-<li>Yeo Wen Qin (Kaynn Cahya)</li>
+<li>Yeo Wen Qin</li>
 </ul>
 
 
